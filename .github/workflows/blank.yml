@@ -28,6 +28,6 @@ jobs:
         env: # Or as an environment variable
           disc_url: ${{ secrets.DISC_WEBHOOK }}
         run: |
-          MAYOR=$(curl https://api.hypixel.net/v2/resources/skyblock/election)
-          echo $MAYOR
-          curl -X POST -H 'Content-Type: application/json' -d '{"username":"Marina Bot","avatar_url":"https://github.com/Nixon4Ever/hypixel-mayor-check/blob/main/marina.png?raw=true","content": "$MAYOR"}' $disc_url
+          JSON=$(curl https://api.hypixel.net/v2/resources/skyblock/election)
+          MAYOR=$(echo $JSON|sed 's/,/\n/g'|grep "name"|head -n 1|sed 's/"name":"//g'|sed 's/"//g')
+          curl -X POST -H 'Content-Type: application/json' -d '{"content": '"\"$MAYOR\""',"username":"Marina Bot","avatar_url":"https://raw.githubusercontent.com/Nixon4Ever/hypixel-mayor-check/main/marina.png"}' $disc_url
