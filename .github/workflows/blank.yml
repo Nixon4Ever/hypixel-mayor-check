@@ -30,8 +30,8 @@ jobs:
         run: |
           JSON=$(curl https://api.hypixel.net/v2/resources/skyblock/election)
           MAYOR=$(echo $JSON|sed 's/,/\n/g'|grep "name"|head -n 1|sed 's/"name":"//g'|sed 's/"//g')
-          if [ $MAYOR = "Cole" ]; then
+          if [ $MAYOR = "Henry" ]; then
             curl -X POST -H 'Content-Type: application/json' -d '{"content": "COLE IS THE MAYOR","username":"Marina Bot","avatar_url":"https://raw.githubusercontent.com/Nixon4Ever/hypixel-mayor-check/main/marina.png"}' $disc_url
-          elif [ $MAYOR -eq "Marina" ]; then
+          elif [ $MAYOR = "Marina" ]; then
             curl -X POST -H 'Content-Type: application/json' -d '{"content": "MARINA IS THE MAYOR","username":"Marina Bot","avatar_url":"https://raw.githubusercontent.com/Nixon4Ever/hypixel-mayor-check/main/marina.png"}' $disc_url
           fi
