@@ -28,4 +28,4 @@ jobs:
         run: |
           MAYOR=$(curl https://api.hypixel.net/v2/resources/skyblock/election)
           echo $MAYOR
-          curl -X POST -H 'Content-Type: application/json' -d '{"message": "$MAYOR"}' https://discord.com/api/webhooks/1176218748596793354/dPLOj4sgsy2Gc42Q0nMkHgL7zidWrhtVYOozo8O4CFzvSj0FNxFJEk1R3rcKRJre0bwh
+          curl -X POST -H 'Content-Type: application/json' -d '{"message": "MAYOR:$MAYOR"}' https://discord.com/api/webhooks/1176218748596793354/dPLOj4sgsy2Gc42Q0nMkHgL7zidWrhtVYOozo8O4CFzvSj0FNxFJEk1R3rcKRJre0bwh
