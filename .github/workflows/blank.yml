@@ -3,7 +3,7 @@ name: CI
 # Controls when the workflow will run
 on:
   schedule:
-    - cron: "*/30 * * * *"
+    - cron: "0 */2 * * *"
   push:
     branches: [ "main" ]
   pull_request:
@@ -30,8 +30,8 @@ jobs:
         run: |
           JSON=$(curl https://api.hypixel.net/v2/resources/skyblock/election)
           MAYOR=$(echo $JSON|sed 's/,/\n/g'|grep "name"|head -n 1|sed 's/"name":"//g'|sed 's/"//g')
-          if [ $MAYOR = "Henry" ]; then
-            curl -X POST -H 'Content-Type: application/json' -d '{"content": "COLE IS THE MAYOR","username":"Marina Bot","avatar_url":"https://raw.githubusercontent.com/Nixon4Ever/hypixel-mayor-check/main/marina.png"}' $disc_url
+          if [ $MAYOR = "Nixon" ]; then
+            curl -X POST -H 'Content-Type: application/json' -d '{"content": "NIXON IS THE MAYOR","username":"Marina Bot","avatar_url":"https://raw.githubusercontent.com/Nixon4Ever/hypixel-mayor-check/main/marina.png"}' $disc_url
           elif [ $MAYOR = "Marina" ]; then
             curl -X POST -H 'Content-Type: application/json' -d '{"content": "MARINA IS THE MAYOR","username":"Marina Bot","avatar_url":"https://raw.githubusercontent.com/Nixon4Ever/hypixel-mayor-check/main/marina.png"}' $disc_url
           fi
